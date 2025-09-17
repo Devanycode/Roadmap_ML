@@ -11,5 +11,5 @@ ENV/
 .vscode/
 .DS_Store
 
-# Varios
-Recordatorio/ 
+# Personales
+/Recordatorio
