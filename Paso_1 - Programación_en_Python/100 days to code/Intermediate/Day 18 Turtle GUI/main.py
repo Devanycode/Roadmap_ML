@@ -25,6 +25,7 @@ color_list = [
 
 timmy = Turtle()
 timmy.hideturtle()  # No quiero que se vea la tortuga 
+timmy.speed("fastest")
 timmy.teleport(x= -225, y= -225) # Quiero que mi tortuga empiece ahí
 
 screen = Screen()
