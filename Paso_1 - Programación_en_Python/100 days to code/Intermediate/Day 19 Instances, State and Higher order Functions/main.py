@@ -28,14 +28,35 @@ screen.exitonclick()
 from turtle import Turtle, Screen
 from random import randint
 
+# Almacenar los usuarios que apostarán
+count_users = 10
+while count_users > 6:   # El número máximo de usuarios es de 6
+    count_users = int(input("How many users will play? (máx.6) "))
+    if count_users > 6:
+        print("Type a correct number")
+    
+users_play = []
+
 is_race_on = False
 screen = Screen()
+
+for number_user in range(count_users):
+    user = input(f"(User{number_user + 1}) Type your name: ")
+    users_play.append(user)
+
+register_bets = {}
+for user in users_play:
+    user_bet = screen.textinput(
+        title= f"Make your bet {user}", 
+        prompt= "Who will win the race? Enter a colour:\n(red, orange, yellow, green, blue, purple)"
+    )
+    register_bets[user] = user_bet
+
+
 screen.title("Welcome to the run of turtles")
 screen.setup(width= 500, height= 400)
-user_bet = screen.textinput(title= "Make your bet.", prompt= "Who will win the race? Enter a colour: \n (red, orange, yellow, green, blue, purple)")
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]    # Colores del arcoíris
-
-names = ["tim", "tom", "betty", "bet", "jeff", "chris"]
+names = ["tim", "tom"]
 turtles_list = []
 
 for name in names:
@@ -50,21 +71,22 @@ for turtle in turtles_list:
     turtle.goto(x= -225, y= -100 + (coordenaday * 40))
     coordenaday += 1
 
-if user_bet:
+if register_bets:
     is_race_on = True
 
 while is_race_on:
     for turtle in turtles_list:
         # Como la tortuga es de 40z40 queremos que llegue a la meta cuando pasó la mitad de su cuerpo
         if turtle.xcor() >= 230:   # 230 es la meta 
-            if user_bet == turtle.pencolor():
-                print(f"You Win. The {turtle.pencolor()} turtle is the winner.")
-                is_race_on = False
-                break
-            else:
-                print(f"You Lose. The {turtle.pencolor()} turtle is the winner.")
-                is_race_on = False
-                break
+            for key, value in register_bets.items():
+                if value == turtle.pencolor():
+                    print(f"You Win {key}. The {turtle.pencolor()} turtle is the winner.")
+                    is_race_on = False
+                    break
+                else:
+                    print(f"You Lose. The {turtle.pencolor()} turtle is the winner.")
+                    is_race_on = False
+                    break
         random_distance = randint(0,10)
         turtle.forward(random_distance)
     
