@@ -56,7 +56,7 @@ for user in users_play:
 screen.title("Welcome to the run of turtles")
 screen.setup(width= 500, height= 400)
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]    # Colores del arcoíris
-names = ["tim", "tom"]
+names = ["tim", "tom", "betty", "bet", "jeff", "chris"]
 turtles_list = []
 
 for name in names:
