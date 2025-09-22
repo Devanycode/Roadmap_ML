@@ -1,6 +1,8 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from random import randint
 from snake import Snake
+from food import Food
+from scoreboard import Scoreboard, GameOver
 import time
 
 # Creación de la pantalla 
@@ -10,37 +12,24 @@ screen.bgcolor("DarkSeaGreen2")
 screen.title("My Snake game")
 screen.tracer(0)   # Para el delay
 
+
 snake = Snake()
+food = Food()
+score = Scoreboard()
+score.update_scoreboard()
+game_over = GameOver()
 screen.update()
 
-
-
-
-food = Turtle(shape= "circle")
-food.color("DarkSalmon")
-food.penup()
-food.shapesize(0.5)
-food_location = food.teleport(randint(-280, 280), randint(-280,280))
-
-
-
-
-
-
-# Funciones para el movimiento de la cabeza de la serpiente
-
-
-# Hay que establecer que no se mueva al mismo lugar donde está ni hacia atrás
-
+# CONTROLES
 screen.listen()
-screen.onkey(fun= snake.move_up, key= "Up")
-screen.onkey(fun= snake.move_up, key= "w")
-screen.onkey(fun= snake.move_down, key= "Down")
-screen.onkey(fun= snake.move_down, key= "s")
-screen.onkey(fun= snake.move_left, key= "Left")
-screen.onkey(fun= snake.move_left, key= "a")
-screen.onkey(fun= snake.move_right, key= "Right")
-screen.onkey(fun= snake.move_right, key= "d")
+screen.onkey(snake.move_up, "Up")
+screen.onkey(snake.move_down, "Down")
+screen.onkey(snake.move_left, "Left")
+screen.onkey(snake.move_right, "Right")
+screen.onkey(snake.move_up, "w")
+screen.onkey(snake.move_down, "s")
+screen.onkey(snake.move_left, "a")
+screen.onkey(snake.move_right, "d")
 
 
 snake_start = True
@@ -48,5 +37,24 @@ while snake_start:
     screen.update()
     time.sleep(0.1)
     snake.snake_move()
+
+    # Detect collision with food
+    if snake.head.distance(food) < 15:
+        food.tp()
+        snake.new_body()
+        score.increase_score()
+    
+    # Detect collision with wall
+    if snake.head.xcor() > 298 or snake.head.xcor() < -298:
+        game_over.lose()
+        snake_start = False
+    if snake.head.ycor() > 300 or snake.head.ycor() < -300:
+        game_over.lose()
+        snake_start = False
+    for part in snake.body[1:]:
+        if snake.head.distance(part) < 10:
+            game_over.lose()
+            snake_start = False
+        
 
 screen.exitonclick()

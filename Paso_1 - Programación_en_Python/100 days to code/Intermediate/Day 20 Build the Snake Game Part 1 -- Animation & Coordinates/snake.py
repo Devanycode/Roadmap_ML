@@ -13,6 +13,7 @@ class Snake:
     def __init__(self):
         self.body = []
         self.snake_body()    # Llama al método del cuerpo de la tortuga apenas se menciona la clase
+        self.head = self.body[0]
 
     def snake_body(self):
         # Cuadrito del cuerpo de la tortuga predeterminado
@@ -24,6 +25,9 @@ class Snake:
             body_part = tim.clone()   # Se crea una copia de tim por cada parte del cuerpo
             body_part.setx(-20 * lives)
             self.body.append(body_part)
+        
+    def new_body(self):
+        self.body.append(self.body[-1].clone())    # Se añade una copia exacta de la cola a la lista
 
     def snake_move(self):
         for body_part in range(len(self.body) - 1, 0, -1):
@@ -48,7 +52,3 @@ class Snake:
     def move_right(self):
         if self.body[0].heading() != LEFT:
            self.body[0].setheading(RIGHT)
-
-    
-
-    
