@@ -22,7 +22,8 @@ class Pong(Turtle):
         self.forward(PONG_FORWARD)
 
     def increase_speed(self):
-        """Aumenta la velocidad de la pelota"""
+        """Aumenta la velocidad de la pelota gradualmente para mayor desafío.
+        Aunque tiene un límite para evitar juego imposible."""
         if self.time_sleep > 0.023:
             self.time_sleep *= 0.9
 
