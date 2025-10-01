@@ -2,7 +2,7 @@ from turtle import Turtle
 from car_manager import MIN_POSITION_Y, INTERVAL_POSITION
 
 # Inicio de creación de vía
-START_X = -300
+START_X = -300     # HEIGHT_SCREEN / 2 * -1 + 20
 # Tamaño de cada línea
 FORWARD_SIZE = 15
 

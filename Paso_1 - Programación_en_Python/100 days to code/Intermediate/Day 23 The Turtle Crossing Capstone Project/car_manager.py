@@ -17,7 +17,7 @@ MAX_POSITION_Y = 260
 INTERVAL_POSITION = 20
 # Probabilidad de cantidad de aparición de coches
 INITIAL_PROBABILITY = 7.5   # Si un número aleatorio entre 0 y 10 es mayor a este se crea un coche nuevo
-
+MODIFY_PROB = 0.97
 
 
 class CarManager(Turtle):
@@ -57,7 +57,7 @@ class CarManager(Turtle):
             car.hideturtle()
         self.cars.clear()
         self.move_distance += MOVE_INCREMENT
-        self.car_probability *= 0.96
+        self.car_probability *= MODIFY_PROB
 
 
 

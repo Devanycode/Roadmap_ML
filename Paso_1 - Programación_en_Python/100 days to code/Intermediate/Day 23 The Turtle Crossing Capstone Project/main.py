@@ -56,9 +56,4 @@ while game_is_on:
     
 
 
-
-# TODO 0: Puedo hacer la simulación de las vías de una carretera 
-
-
-
 screen.exitonclick()
