@@ -20,11 +20,14 @@ class Snake:
         tim = Turtle(shape= "square")
         tim.penup()     # Que no deje rastro cuando camina 
         tim.fillcolor("DarkSlateGray")  # Color de la serpiente
+        tim.goto(x= 0, y= 0)    # Se ubica en el centro de la pantalla
+        tim.setheading(0)   # Empieza mirando hacia la derecha
         self.body.append(tim)    # La cabeza de la tortuga se llama tim
         for lives in range(1, INITIAL_LIVES):   # Se crean cuadritos según las vidas iniciales
             body_part = tim.clone()   # Se crea una copia de tim por cada parte del cuerpo
             body_part.setx(-20 * lives)
             self.body.append(body_part)
+            self.head = self.body[0]
         
     def new_body(self):
         self.body.append(self.body[-1].clone())    # Se añade una copia exacta de la cola a la lista
@@ -34,7 +37,13 @@ class Snake:
             x = self.body[body_part - 1].xcor()
             y = self.body[body_part - 1].ycor()
             self.body[body_part].goto(x, y)
-        self.body[0].forward(VEL_SNAKE)    # La cabeza avanza y las demás la siguen
+        self.head.forward(VEL_SNAKE)    # La cabeza avanza y las demás la siguen
+
+    def restart_snake_body(self):
+        for body in self.body:
+            body.hideturtle()
+        self.body.clear()
+        self.snake_body()
     
 
     def move_up(self):
