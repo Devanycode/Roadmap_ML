@@ -9,7 +9,7 @@ from scoreboard import Scoreboard
 WIDTH_SCREEN = 600
 HEIGHT_SCREEN = 600
 # Distancia de colisión
-DISTANCE_COLLISION = 30
+DISTANCE_COLLISION = 25
 # Ubicación de la meta en Y
 GOAL_Y = 280
 

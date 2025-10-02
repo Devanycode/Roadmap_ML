@@ -46,6 +46,7 @@ screen.onkey(snake.move_left, "a")
 screen.onkey(snake.move_right, "d")
 
 
+# Inicio del juego
 snake_start = True
 while snake_start:
     screen.update()
