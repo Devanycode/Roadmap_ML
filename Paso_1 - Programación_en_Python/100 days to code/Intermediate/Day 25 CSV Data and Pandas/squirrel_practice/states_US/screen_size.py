@@ -1,0 +1,2 @@
+SCREEN_X = 700
+SCREEN_Y = 700
