@@ -28,9 +28,14 @@ for (index, row) in student_data_frame.iterrows():
 # Proyecto Nato Phonetic
 nato_phonetic_csv = pandas.read_csv("nato_phonetic_alphabet.csv")
 # Created phonetic dict 
-nato_phonetic_dict = {row.letter:row.code for (index, row) in nato_phonetic_csv.iterrows()}
+nato_phonetic_dict = {nato.letter:nato.code for (index, nato) in nato_phonetic_csv.iterrows()}
 
 user_word = input("Enter a word: ").upper()   # Porque las claves del diccionario están en mayúsculas
-phonetic_list = [nato_phonetic_dict[letter] for letter in user_word]
+
+for word in user_word:
+    if word in nato_phonetic_dict.keys():
+        print(nato_phonetic_dict[word])
+phonetic_list = [nato_phonetic_dict[word] for word in user_word]
 print(phonetic_list)
 
+# TODO 2. Luego crear una lista con una palabra que ingresa el usuario
