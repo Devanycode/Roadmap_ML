@@ -1,3 +1,5 @@
+"""
+
 with open("./Input/Letters/starting_letter.txt", "r") as file:
     first_line = file.readline()    # Leemos sólo la primera línea para modificar el nombre
     after_lines = file.readlines()  # Como ya leyó la primera línea, leerá sólo de ahí en adelante
@@ -23,5 +25,19 @@ with open("./Input/Names/invited_names.txt", "r") as guests:
         # Creación de la carta personalizada 
         with open(f"./Output/ReadyToSend/{letter_name}", mode= "w") as invitation:            
             invitation.write(letter)
+"""
 
+# Nueva versión
+with open("Input/Letters/starting_letter.txt") as file:
+    letter = file.read()
+    
+with open("Input/Names/invited_names.txt") as guests:
+    names = guests.readlines()
+
+for name in names:
+    name = name.strip()    # Quitamos los saltos de línea de los nombres
+    new_letter = letter.replace("[name]", f"{name}").replace("Angela", "Devany")
+    letter_name = f"letter__for_{name}"
+    with open(f"Output/ReadyToSend/{letter_name}", mode= "w") as letter_names:
+        letter_names.write(new_letter)
 
