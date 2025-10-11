@@ -31,9 +31,6 @@ def password_generator():
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
-# Agregarlo a data.txt
-# Amazon  |  correo  |  contraseña
-# Que se elimine todo después presionar add
 def save_password():
 
     if len(website_input.get()) == 0 or len(password_input.get()) == 0:
@@ -50,10 +47,6 @@ def save_password():
             website_input.delete(0, END)
             password_input.delete(0, END)
     
-
-
-
-
 # ---------------------------- UI SETUP ------------------------------- #
 
 # Ventana
@@ -81,7 +74,7 @@ website_input.grid(column=1, row=1, columnspan=2)
 website_input.focus()
 email_user_input = Entry(width=35)
 email_user_input.grid(column=1, row=2, columnspan=2)
-email_user_input.insert(index=0, string="devany.code.gg@gmail.com")
+email_user_input.insert(index=0, string="devany.code.gg@gmail.com")    # Cuenta personal por defecto
 password_input = Entry(width=21)
 password_input.grid(column=1, row=3)
 
