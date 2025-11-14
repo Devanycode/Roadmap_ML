@@ -1,13 +1,17 @@
-import requests
 import datetime
+from dotenv import load_dotenv
+import requests
+import os 
 
-USERNAME = "devanycode"
-TOKEN = "XFVT9(+vocNRV8"
+load_dotenv()
+USERNAME = os.getenv("PIXELO_USER")
+TOKEN = os.getenv("PIXELO_KEY")
+pixela_endpoint = "https://pixe.la/v1/users"
+
 
 date = datetime.datetime.today()
 date_today = f"{date.year}{date.month}{date.day}"
 
-pixela_endpoint = "https://pixe.la/v1/users"
 
 # USER 
 user_params = {
