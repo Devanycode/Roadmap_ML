@@ -1,2 +1,0 @@
-- Crear mi propia aplicación de Pomodoro
-- Crear el juego de los carritos del celulcar
